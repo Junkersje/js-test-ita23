@@ -7,8 +7,8 @@
  * const person = createPersonObject();
  * // person might be { name: 'John Doe', age: 30, city: 'New York' }
  */
-function createPersonObject() {
-
+function createPersonObject(name, age, city) {
+    return {name: name, age: age, city: city}
 }
 
 
@@ -23,7 +23,7 @@ function createPersonObject() {
  * // personName will be 'John Doe'
  */
 function getPersonName(person) {
-
+    return person.name
 }
 
 
@@ -40,7 +40,11 @@ function getPersonName(person) {
  *
  */
 function findPersonByName(persons, name) {
-
+    for (let person of persons){
+        if (person.name === name) {
+            return person
+        }
+    }
 }
 
 
@@ -55,7 +59,11 @@ function findPersonByName(persons, name) {
  * // totalAge will be 55
  */
 function getTotalAge(persons) {
-
+    let totalage = 0;
+    for (let person of persons){
+        totalage = totalage + person.age
+    }
+    return totalage
 }
 
 
@@ -74,5 +82,10 @@ function getTotalAge(persons) {
  * const hasDuplicates = checkForDuplicateEmails(users); // true
  */
 function checkForDuplicateEmails(users) {
-
+    let checkedEmails = [];
+    for (let user of users) {
+        if (checkedEmails.includes(user.email)) {return true}
+        checkedEmails.push(user.email)
+    }
+    return false
 }
